@@ -3,14 +3,14 @@
 logs_folder="/var/log/shell-script"
 script_name=${0%.*}
 timestamp=$(date +%Y-%m-%d-%H-%M-%S)
-logs_file="$logs_folder/$script_name-$timestamp.log"
+log_file="$logs_folder/$script_name-$timestamp.log"
 
 mkdir -p $logs_folder
 
-$R=\e[31m
-$G=\e[32m
-$Y=\e[33m
-$N=\e[0m
+R="\e[31m"
+G="\e[32m"
+Y="\e[33m"
+N="\e[0m"
 
 userid=$(id -u)
 check_root() {
