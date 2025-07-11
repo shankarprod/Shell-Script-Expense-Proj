@@ -43,10 +43,10 @@ systemctl start nginx &>> $log_file
 validate $? "starting nginx"
 
 rm -rf /usr/share/nginx/html/*
-VALIDATE $? "Removing default website"
+validate $? "Removing default website"
 
 curl -o /tmp/frontend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-frontend-v2.zip &>> $log_file
-VALIDATE $? "Downloding frontend code"
+validate $? "Downloding frontend code"
 
 cd /usr/share/nginx/html
 
