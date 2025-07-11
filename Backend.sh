@@ -71,7 +71,7 @@ npm install  &>> $log_file
 validate $? "installing packages via npm"
 
 #chance the folder name here
-cp /home/ec2-user/jul-shell/backend.service /etc/systemd/system/backend.service
+cp /home/ec2-user/Shell-Script-Expense-Proj/backend.service /etc/systemd/system/backend.service
 
 dnf install mysql -y &>> $log_file
 validate $? "installing mysql cli"
