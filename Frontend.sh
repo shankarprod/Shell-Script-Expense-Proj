@@ -33,13 +33,13 @@ validate() {
 echo "script started executing at $(date)" | tee -a $log_file
 check_root
 
-dnf install nginx -y $>> &log_file
+dnf install nginx -y &>> $log_file
 validate $? "installing nginx"
 
-systemctl enable nginx $>> &log_file
+systemctl enable nginx &>> $log_file
 validate $? "enabling nginx"
 
-systemctl start nginx $>> &log_file
+systemctl start nginx &>> $log_file
 validate $? "starting nginx"
 
 rm -rf /usr/share/nginx/html/*
@@ -57,6 +57,6 @@ validate $? "Extract frontend code"
 cp /home/ec2-user/Shell-Script-Expense-Proj/expense.conf /etc/nginx/default.d/expense.conf
 validate $? "Copied expense conf"
 
-systemctl restart nginx &>>$log_file
+systemctl restart nginx &>> $log_file
 validate $? "Restart Nginx" 
 #710 start- 718 till the end of file - 
