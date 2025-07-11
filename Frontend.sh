@@ -33,13 +33,13 @@ validate() {
 echo "script started executing at $(date)" | tee -a $log_file
 check_root
 
-dnf install nginx -y $>> $log_file
+dnf install nginx -y $>> &log_file
 validate $? "installing nginx"
 
-systemctl enable nginx $>> $log_file
+systemctl enable nginx $>> &log_file
 validate $? "enabling nginx"
 
-systemctl start nginx $>> $log_file
+systemctl start nginx $>> &log_file
 validate $? "starting nginx"
 
 rm -rf /usr/share/nginx/html/*
