@@ -4,14 +4,14 @@
 logs_folder="/var/log/shell-script"
 script_name=${0%.*}
 timestamp=$(date +%Y-%m-%d-%H-%M-%S)
-logs_file="$logs_folder/$script_name-$timestamp.log"
+log_file="$logs_folder/$script_name-$timestamp.log"
 
 mkdir -p $logs_folder
 
-$R=\e[31m
-$G=\e[32m
-$Y=\e[33m
-$N=\e[0m
+$R="\e[31m"
+$G="\e[32m"
+$Y="\e[33m"
+$N="\e[0m"
 
 userid=$(id -u)
 check_root() {
@@ -35,7 +35,7 @@ validate() {
 echo "script started executing at $(date)" | tee -a $log_file
 check_root
 
-dnf install mysql-server -Y &>> $log_file
+dnf install mysql-server -y &>> $log_file
 validate $? "installing mysql server"
 
 systemctl enable mysqld &>> $log_file
@@ -51,6 +51,6 @@ then
     mysql_secure_installation --set-root-pass ExpenseApp@1
     validate $? "settingup root password"
 else
-    echo -e "MySQL root password is already setup...$Y SKIPPING $N" | tee -a $LOG_FILE
+    echo -e "MySQL root password is already setup...$Y SKIPPING $N" | tee -a $log_file
 fi
 
